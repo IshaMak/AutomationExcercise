@@ -1,0 +1,178 @@
+{
+	"info": {
+		"_postman_id": "f23bb2d5-21af-475d-a047-68ba9631cbb9",
+		"name": "API collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41926093",
+		"_collection_link": "https://qaapiautomation-2459.postman.co/workspace/Project_API_Automation~82c29b6f-19b3-4fda-b82f-caaa2a162fa9/collection/41926093-f23bb2d5-21af-475d-a047-68ba9631cbb9?action=share&source=collection_link&creator=41926093"
+	},
+	"item": [
+		{
+			"name": "Get All Products List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Store JSON response body\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"// Assert that the HTTP response code is 200\r",
+							"pm.test(\"HTTP response code is as expected 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Assert that the \"responseCode\" is 200 in the response body\r",
+							"pm.test(\"responseCode in response body is as expected 200\", function () {\r",
+							"    pm.expect(jsonData.responseCode).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"// Assert that the HTTP response code and the 'responseCode' in the response body are the same\r",
+							"pm.test(\"HTTP Response Code matches the 'responseCode' in the response body\", function () {\r",
+							"    pm.expect(pm.response.code).to.eql(jsonData.responseCode);\r",
+							"});\r",
+							"\r",
+							"// Assert \"products\" attribute exists\r",
+							"pm.test(\"response contains 'products' attribute\", function () {\r",
+							"    pm.expect(jsonData).to.have.property('products');\r",
+							"});\r",
+							"\r",
+							"// **************** Verify all expected attributes are present in 'products' array *****************\r",
+							"\r",
+							"pm.test(\"'products' array is not empty\", function () {\r",
+							"    pm.expect(jsonData.products).to.be.an('array').that.is.not.empty;\r",
+							"});\r",
+							"\r",
+							"// Check if 'id' exists in the products\r",
+							"pm.test(\"'products' contains 'id' attribute\", function () {\r",
+							"    pm.expect(jsonData.products[0]).to.have.property('id');\r",
+							"});\r",
+							"\r",
+							"// Check if 'name' exists in the products\r",
+							"pm.test(\"'products' contains 'name' attribute\", function () {\r",
+							"    pm.expect(jsonData.products[0]).to.have.property('name');\r",
+							"});\r",
+							"\r",
+							"// Check if 'price' exists in the products\r",
+							"pm.test(\"'products' contains 'price' attribute\", function () {\r",
+							"    pm.expect(jsonData.products[0]).to.have.property('price');\r",
+							"});\r",
+							"\r",
+							"// Check if 'brand' exists in the products\r",
+							"pm.test(\"'products' contains 'brand' attribute\", function () {\r",
+							"    pm.expect(jsonData.products[0]).to.have.property('brand');\r",
+							"});\r",
+							"\r",
+							"// Check if 'category' exists in the products\r",
+							"pm.test(\"'products' contains 'category' attribute\", function () {\r",
+							"    pm.expect(jsonData.products[0]).to.have.property('category');\r",
+							"});\r",
+							"\r",
+							"// Check if 'category' exists in the products\r",
+							"pm.test(\"'products' contains 'category' attribute\", function () {\r",
+							"    pm.expect(jsonData.products[0]).to.have.property('category');\r",
+							"});\r",
+							"\r",
+							"// Check if 'usertype' exists in the category\r",
+							"pm.test(\"'category' contains 'usertype' attribute\", function () {\r",
+							"    pm.expect(jsonData.products[0].category).to.have.property('usertype');\r",
+							"});\r",
+							"\r",
+							"// Check if 'usertype' exists in the category\r",
+							"pm.test(\"'category' contains 'category' attribute\", function () {\r",
+							"    pm.expect(jsonData.products[0].category).to.have.property('category');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://automationexercise.com/api/productsList",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"productsList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Brands List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Store JSON response body\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"// Assert that the HTTP response code is 200\r",
+							"pm.test(\"HTTP response code is as expected 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Assert that the \"responseCode\" is 200 in the response body\r",
+							"pm.test(\"responseCode in response body is as expected 200\", function () {\r",
+							"    pm.expect(jsonData.responseCode).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"// Assert that the HTTP response code and the 'responseCode' in the response body are the same\r",
+							"pm.test(\"HTTP Response Code matches the 'responseCode' in the response body\", function () {\r",
+							"    pm.expect(pm.response.code).to.eql(jsonData.responseCode);\r",
+							"});\r",
+							"\r",
+							"// Assert \"brands\" attribute exists\r",
+							"pm.test(\"response contains 'brands' attribute\", function () {\r",
+							"    pm.expect(jsonData).to.have.property('brands');\r",
+							"});\r",
+							"\r",
+							"// Assert that 'brands' array is not empty\r",
+							"pm.test(\"'brands' array is not empty\", function () {\r",
+							"    pm.expect(jsonData.brands).to.be.an('array').that.is.not.empty;\r",
+							"});\r",
+							"\r",
+							"jsonData.brands.forEach(function (item) {\r",
+							"    pm.test(`Brand ID is as expected: ${item.id}`, function () {\r",
+							"        pm.expect(item.id).to.be.a('number');\r",
+							"    });\r",
+							"\r",
+							"    pm.test(`Brand name is valid for ID`, function () {\r",
+							"        pm.expect(item.brand).to.be.a('string').that.is.not.empty;\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://automationexercise.com/api/brandsList",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"brandsList"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
